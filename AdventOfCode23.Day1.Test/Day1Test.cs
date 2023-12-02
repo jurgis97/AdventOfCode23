@@ -3,42 +3,54 @@ namespace AdventOfCode23.Day1.Test;
 [TestClass]
 public class Day1Test
 {
+    private const string DataFilesRoot = "../../../../AdventOfCode23.Day1/Data";
+    
     [TestMethod]
-    public void CalculateCalibrationValue_1abc2_Returns12()
+    [DataRow(0, 12)]
+    [DataRow(1, 38)]
+    [DataRow(2, 15)]
+    [DataRow(3, 77)]
+    public void CalculateCalibrationValue_Example1AsSingleLines_ReturnsExpectedInt(int lineIndex, int expected)
     {
+        var lines = File.ReadAllLines($"{DataFilesRoot}/Example1.txt");
+        var line = lines[lineIndex];
+        
         var day1 = new Day1();
-        var result = day1.CalculateCalibrationValue("1abc2");
-        Assert.AreEqual(12, result);
+        var result = day1.CalculateCalibrationValue(line);
+        Assert.AreEqual(expected, result, $"Line: {line} | Expected: {expected} | Result: {result}");
     }
     
     [TestMethod]
-    public void CalculateCalibrationValue_pqr3stu8vwx_Returns38()
+    [DataRow(0, 29)]
+    [DataRow(1, 83)]
+    [DataRow(2, 13)]
+    [DataRow(3, 24)]
+    [DataRow(4, 42)]
+    [DataRow(5, 14)]
+    [DataRow(6, 76)]
+    public void CalculateCalibrationValue_Example2AsSingleLines_ReturnsExpectedInt(int lineIndex, int expected)
     {
+        var lines = File.ReadAllLines($"{DataFilesRoot}/Example2.txt");
+        var line = lines[lineIndex];
+        
         var day1 = new Day1();
-        var result = day1.CalculateCalibrationValue("pqr3stu8vwx");
-        Assert.AreEqual(38, result);
+        var result = day1.CalculateCalibrationValue(line);
+        Assert.AreEqual(expected, result, $"Line: {line} | Expected: {expected} | Result: {result}");
     }
     
     [TestMethod]
-    public void CalculateCalibrationValue_a1b2c3d4e5f_Returns15()
+    [DataRow("foo3twone", 31)]
+    public void CalculateCalibrationValue_CustomLines_ReturnsExpectedInt(string line, int expected)
     {
         var day1 = new Day1();
-        var result = day1.CalculateCalibrationValue("a1b2c3d4e5f");
-        Assert.AreEqual(15, result);
-    }
-    
-    [TestMethod]
-    public void CalculateCalibrationValue_treb7uchet_Returns77()
-    {
-        var day1 = new Day1();
-        var result = day1.CalculateCalibrationValue("treb7uchet");
-        Assert.AreEqual(77, result);
+        var result = day1.CalculateCalibrationValue(line);
+        Assert.AreEqual(expected, result, $"Line: {line} | Expected: {expected} | Result: {result}");
     }
     
     [TestMethod]
     public void CalculateCalibrationValue_ExampleFile_Returns142()
     {
-        var input = File.ReadAllLines("../../../../AdventOfCode23.Day1/Data/Example.txt");
+        var input = File.ReadAllLines($"{DataFilesRoot}/Example1.txt");
         
         var day1 = new Day1();
         var result = day1.CalculateCalibrationValue(input);
@@ -46,9 +58,19 @@ public class Day1Test
     }
     
     [TestMethod]
+    public void CalculateCalibrationValue_ExampleFile_Returns281()
+    {
+        var input = File.ReadAllLines($"{DataFilesRoot}/Example2.txt");
+        
+        var day1 = new Day1();
+        var result = day1.CalculateCalibrationValue(input);
+        Assert.AreEqual(281, result);
+    }
+    
+    [TestMethod]
     public void CalculateCalibrationValue_TaskInputPartOne_Returns56506()
     {
-        var input = File.ReadAllLines("../../../../AdventOfCode23.Day1/Data/TaskInput.txt");
+        var input = File.ReadAllLines($"{DataFilesRoot}/TaskInput.txt");
         
         var day1 = new Day1();
         var result = day1.CalculateCalibrationValue(input);

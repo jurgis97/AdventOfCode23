@@ -9,6 +9,6 @@ public abstract class Program
         var input = File.ReadAllLines("../../../../AdventOfCode23.Day1/Data/TaskInput.txt");
         var result = day1.CalculateCalibrationValue(input);
 
-        Console.WriteLine($"[Part 1] Day 1 Result: {result}");
+        Console.WriteLine($"Day 1 Result: {result}");
     }
 }
