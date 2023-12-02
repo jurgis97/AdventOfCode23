@@ -18,3 +18,6 @@ var games = input.Select(GameParser.ParseGameFromLine);
 var result = day2.GetSumOfPossibleGamesIds(games);
 
 Console.WriteLine($"Day 2 Part 1 Result: {result}");
+
+var gamesPowerSums = day2.GetGamesPowerSums(games);
+Console.WriteLine($"Day 2 Part 2 Result: {gamesPowerSums}");

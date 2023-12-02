@@ -46,4 +46,33 @@ public class Day2Test
         Assert.AreEqual(8, sum);
     }
     
+    [TestMethod]
+    [DataRow(0, 48)]
+    [DataRow(1, 12)]
+    [DataRow(2, 1560)]
+    [DataRow(3, 630)]
+    [DataRow(4, 36)]
+    public void GetGamePower_FromExampleFile_ReturnsGame(int lineIndex, int expected)
+    {
+        var lines = File.ReadAllLines($"{DataFilesRoot}/Example1.txt");
+        var line = lines[lineIndex];
+        
+        var day2 = new Day2(Example1BagInformation);
+        var game = GameParser.ParseGameFromLine(line);
+        var gamePower = day2.GetGamePower(game);
+        
+        Assert.AreEqual(expected, gamePower, $"Line: {line} | Expected: {expected} | Result: {gamePower}");
+    }
+    
+    [TestMethod]
+    public void GetGamesPowerSums_FromExampleFile_Returns2286()
+    {
+        var lines = File.ReadAllLines($"{DataFilesRoot}/Example1.txt");
+        
+        var day2 = new Day2(Example1BagInformation);
+        var games = lines.Select(GameParser.ParseGameFromLine);
+        var sum = day2.GetGamesPowerSums(games);
+        
+        Assert.AreEqual(2286, sum);
+    }
 }

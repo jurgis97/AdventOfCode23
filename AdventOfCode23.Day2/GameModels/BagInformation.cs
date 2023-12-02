@@ -2,5 +2,5 @@
 
 public class BagInformation
 {
-    public Dictionary<Color, int> AvailableBallsForColor { get; set; }
+    public Dictionary<Color, int> AvailableBallsForColor { get; set; } = new();
 }
