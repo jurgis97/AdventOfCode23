@@ -26,4 +26,73 @@ public class Day3Test
         var result = day3.GetSum(lines);
         Assert.AreEqual(expectedResult, result);
     }
+    
+    [TestMethod]
+    public void GetGearRatiosSum_Example1Input_Returns467835()
+    {
+        var input = File.ReadAllLines($"{DataFilesRoot}/Example1.txt");
+        var day3 = new Day3();
+        
+        var result = day3.GetGearRatiosSum(input);
+        Assert.AreEqual(467835, result);
+    }
+    
+    [TestMethod]
+    [DataRow(".10*10.", 100)]
+    [DataRow("10*10", 100)]
+    [DataRow(".10*10", 100)]
+    [DataRow("10*10*", 100)]
+    [DataRow("""
+             10...
+             ..*..
+             ...10
+             """, 100)]
+    [DataRow("""
+             .....
+             ..*10
+             ...10
+             """, 100)]
+    [DataRow("""
+             10....
+             ..*.10
+             ...10.
+             """, 100)]
+    [DataRow("""
+             10.10
+             ..*..
+             ...10
+             """, 1000)]
+    [DataRow("""
+             ...10
+             ..*..
+             10...
+             """, 100)]
+    [DataRow("""
+             ...100
+             ...*..
+             100...
+             """, 10000)]
+    [DataRow("""
+             ..10.
+             ..*..
+             .10..
+             """, 100)]
+    [DataRow("""
+             .10..
+             ..*..
+             ..10.
+             """, 100)]
+    [DataRow("""
+             .10
+             ..*
+             .10
+             """, 100)]
+    public void GetsGearRationsSum_CustomData_ReturnsExpectedResult(string input, int expectedResult)
+    {
+        var lines = input.Split(Environment.NewLine);
+        var day3 = new Day3();
+        
+        var result = day3.GetGearRatiosSum(lines);
+        Assert.AreEqual(expectedResult, result);
+    }
 }

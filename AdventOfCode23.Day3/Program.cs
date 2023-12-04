@@ -6,5 +6,7 @@ var day3 = new Day3();
 
 var input = File.ReadAllLines($"{dataFilesRoot}/TaskInput.txt");
 var result = day3.GetSum(input);
-
 Console.WriteLine($"Day 3 Part 1: {result}");
+
+result = day3.GetGearRatiosSum(input);
+Console.WriteLine($"Day 3 Part 2: {result}");
